@@ -1,0 +1,71 @@
+
+.titulo-contenedor {
+    width:100%;
+    height:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titlo {
+    font-size: 12px;
+    text-align: center;
+}
+
+.Figuritas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid gray;
+}
+
+.img-contenedor {
+    width:80%;
+    overflow: hidden;
+}
+
+.Bandera {
+    height:55px;
+}
+
+.Jugador {
+    height: 100px;
+}
+
+.img-figura {
+    width:100%;
+    object-fit:fill;
+}
+
+.tiene {
+    background-color: white;
+    width:100%;
+    height:60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.no-tiene {
+    background-color: gray;
+    width:100%;
+    height:100%;
+}
+
+.but {
+    padding: 5%;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.but-agregar {
+    background-color: lightgreen;
+}
+
+.but-restar {
+    background-color: lightcoral;
+}
+
+.but-obtener {
+    background-color: lightblue;
+}
