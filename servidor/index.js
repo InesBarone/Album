@@ -1,6 +1,8 @@
 // EXPRESS
 
 const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
 const app = express();
 app.use(express.json());
 
@@ -9,17 +11,19 @@ const cors = require("cors");
 app.use(cors());
 
 //CONTROLLERS
-const figuritas = require("./controllers/usuario");
+const figuritas = require("./controllers/figuritas");
+const auth = require("./controllers/auth");
+app.use(auth);
 
+//MIDDLEWARES
+const { validateJWT } = require("./middlewares/jwt");
+
+//ENDPOINTS
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
-app.get("/figuritas", figuritas.todasFiguritas);
-app.get("/figuritas/tengo", figuritas.tieneFiguritas);
-app.get("/figuritas/faltan", figuritas.faltanFiguritas);
-app.get("/figuritas/repetidas", figuritas.repetidasFiguritas);
-
+app.get("/figuritas", validateJWT, figuritas.todasFiguritas);
 app.put("/figuritas/:id", figuritas.unaFigurita);
 
 app.listen(3002, () => {

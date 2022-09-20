@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import "./Figuritas.css";
 
-export default function Figuritas({ obj, setTodo, tengoFigurita, i }) {
+export default function Figuritas({
+  obj,
+  setTodo,
+  tengoFigurita,
+  agregarRepetida,
+  restarRepetida,
+}) {
   return (
     <div>
       {obj.tengo ? (
@@ -13,9 +19,22 @@ export default function Figuritas({ obj, setTodo, tengoFigurita, i }) {
             <img src={obj.url_foto} className="img-figura" />
           </div>
           <div className="tiene">
-            <button className="but but-agregar"> +1 </button>
-            <button className="but but-restar"> -1 </button>
+            <button
+              className="but but-agregar"
+              onClick={() => agregarRepetida(obj.id, obj)}
+            >
+              {" "}
+              +1{" "}
+            </button>
+            <button
+              className="but but-restar"
+              onClick={() => restarRepetida(obj.id, obj)}
+            >
+              {" "}
+              -1{" "}
+            </button>
           </div>
+          <p>Tienes {obj.repetidas} figuritas repetidas</p>
         </div>
       ) : (
         <div className={`Figuritas`}>
@@ -28,7 +47,7 @@ export default function Figuritas({ obj, setTodo, tengoFigurita, i }) {
           <div className="tiene">
             <button
               className="but but-obtener"
-              onClick={() => tengoFigurita(obj.id, setTodo)}
+              onClick={() => tengoFigurita(obj.id, obj)}
             >
               Agregar
             </button>
